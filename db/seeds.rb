@@ -17,7 +17,8 @@ posts = Post.all
 end
 
 Post.find_or_create_by(title: "Dave has a title", body: "and a very unique body")
-
+if post.last.title = 
+puts "Seed finished"
 
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
