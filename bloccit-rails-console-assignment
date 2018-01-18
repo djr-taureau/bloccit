@@ -1,0 +1,38 @@
+```Ruby
+Loading development environment (Rails 5.1.4)
+[1] pry(main)> nesting
+Nesting status:
+--
+0. main (Pry top level)
+[2] pry(main)> post = Post.first
+  Post Load (0.6ms)  SELECT  "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT ?  [["LIMIT", 1]]
+=> #<Post:0x00007fdfd6d16858
+ id: 1,
+ title: "First Post",
+ string: nil,
+ body: "This is the first post in our system",
+ created_at: Thu, 18 Jan 2018 18:12:21 UTC +00:00,
+ updated_at: Thu, 18 Jan 2018 18:12:21 UTC +00:00>
+[3] pry(main)> cd post
+[4] pry(#<Post>):1> nesting
+Nesting status:
+--
+0. main (Pry top level)
+1. #<Post>
+[5] pry(#<Post>):1> self.to_s
+=> "#<Post:0x00007fdfd6d16858>"
+[6] pry(#<Post>):1> self.title = "some new title"
+=> "some new title"
+[7] pry(#<Post>):1> self.body = 'some new body'
+=> "some new body"
+[8] pry(#<Post>):1> self.changes
+=> {"title"=>["First Post", "some new title"],
+ "body"=>
+  ["This is the first post in our system", "some new body"]}
+[9] pry(#<Post>):1> self.save!
+   (0.1ms)  begin transaction
+  SQL (1.6ms)  UPDATE "posts" SET "title" = ?, "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["title", "some new title"], ["body", "some new body"], ["updated_at", "2018-01-18 18:25:17.139017"], ["id", 1]]
+   (0.8ms)  commit transaction
+=> true
+[10] pry(#<Post>):1> 
+```
