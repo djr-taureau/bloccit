@@ -27,6 +27,9 @@ source 'https://rubygems.org'
  
  # Use Puma as the app server
  gem 'puma', '~> 3.0'
+
+
+
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
  # Use Uglifier as compressor for JavaScript assets
@@ -40,6 +43,8 @@ source 'https://rubygems.org'
  gem 'jbuilder', '~> 2.5'
  
  gem 'thor', '0.19.1'
+
+ gem 'bootstrap-sass'
  
  group :development do
    gem 'listen', '~> 3.0.5'
