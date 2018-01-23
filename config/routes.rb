@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :advertisements
   resources :questions
 
+  resources :users, only: [:new, :create]
+
   get 'about' => 'welcome#about'
   
   root 'welcome#index'

@@ -47,6 +47,8 @@ source 'https://rubygems.org'
  gem 'thor', '0.19.1'
 
  gem 'bootstrap-sass'
+
+ gem 'bcrypt'
  
  group :development do
    gem 'listen', '~> 3.0.5'
