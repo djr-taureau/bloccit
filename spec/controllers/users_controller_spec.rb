@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   let(:new_user_attributes) do
     {
-      name: "BlocHead",
+      name: "dumbhead",
       email: "blochead@bloc.io",
       password: "blochead",
       password_confirmation: "blochead"
@@ -52,6 +52,12 @@ RSpec.describe UsersController, type: :controller do
     it "sets user password_confirmation properly" do
       post :create, params: { user: new_user_attributes }
       expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
+    end
+
+
+    it "logs the user in after sign up" do
+      post :create, params: { user: new_user_attributes }
+      expect(session[:user_id]).to eq assigns(:user).id
     end
   end
 end
