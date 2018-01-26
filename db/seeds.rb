@@ -52,13 +52,19 @@ end
   )
 end
 
-user = User.first
-user = update_attributes!(
-  email: 'dave.ruyle@me.com',
-  password: "helloworld"
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
 )
 
-Post.find_or_create_by(title: "Dave has a title", body: "and a very unique body")
+# Create a member
+member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld'
+)
 
 puts "Seed Finished!"
 puts "#{User.count} users created"
