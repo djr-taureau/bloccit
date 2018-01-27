@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :authorize_user, except: [:show, :new, :create]
 
   def show
+    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
   end
 
