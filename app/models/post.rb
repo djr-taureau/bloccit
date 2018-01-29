@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   end
 
   def down_votes
-    votes.where(value: 11).count
+    votes.where(value: -1).count
   end
 
   def points
