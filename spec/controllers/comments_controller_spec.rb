@@ -3,10 +3,10 @@ require 'rails_helper'
 include SessionsHelper
 
 RSpec.describe CommentsController, type: :controller do
-  let(:my_user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
-  let(:other_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "password", role: :member) }
-  let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-  let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: my_user) }
+  let(:my_topic) { create(:topic) }
+  let(:my_user) { create(:user) }
+  let(:other_user) { create(:user) }
+  let(:my_post) { create(:post, topic: my_topic, user: my_user) }
   let(:my_comment) { Comment.create!(body: 'Comment Body', post: my_post, user: my_user) }
 
   context "guest" do
@@ -52,7 +52,7 @@ RSpec.describe CommentsController, type: :controller do
     end
   end
 
-  context "memer user doing CRUD on a comment they own" do
+  context "member user doing CRUD on a comment they own" do
     before do
       create_session(my_user)
     end

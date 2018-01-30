@@ -26,6 +26,7 @@ source 'https://rubygems.org'
   gem 'rails-controller-testing'
   gem 'shoulda'
   gem 'meta_request'
+  gem 'factory_girl_rails', '~> 4.0'
  end
  
  # Use Puma as the app server
