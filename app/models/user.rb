@@ -3,7 +3,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post, dependent: :destroy
   
+
   before_save { self.email = email.downcase if email.present? }
   before_save { self.role ||= :member }
   #before_save :format_name
@@ -33,6 +35,15 @@ class User < ApplicationRecord
   def favorite_for(post)
     favorites.where(post_id: post.id).first
   end
+
+  def posts?
+    self.posts.first
+  end
+
+  def comments?
+    self.comments.first
+  end
+
 
   def avatar_url(size)
     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
