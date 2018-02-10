@@ -35,7 +35,7 @@
 <!-- Add the count of votes for each favorite post -->
 <h2>Favorite Posts</h2>
 <%@user.favorites.each do |favorite|%>
-<%= render favorite.post %>
+<%= render @favorite.post %>
     <%avatar_url= favorite.post.user.avatar_url(48)%>
     <% if avatar_url %>
         <div class="media-right">
