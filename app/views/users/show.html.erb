@@ -31,7 +31,7 @@
     <%= render @user.comments %>
   <% else %>
     <p><%= @user.name %> has not submitted any comments... yet.</p>
-  <% end %>
+  <% end %> 
 <!-- Add the count of votes for each favorite post -->
 <h2>Favorite Posts</h2>
 <%@user.favorites.each do |favorite|%>
